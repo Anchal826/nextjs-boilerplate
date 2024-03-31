@@ -18,7 +18,7 @@ const Screen1: NextPage = () => {
       <img
         className={styles.errorMsgillustrationIcon}
         alt=""
-        src="/error-msgillustration.svg"
+        src="public/vercel.svg"
       />
       <div className={styles.statusBar}>
         <div className={styles.mastersStatusBar}>
