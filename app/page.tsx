@@ -106,7 +106,7 @@ const Screen1: NextPage = () => {
       <img
         className={styles.rinotification2LineIcon}
         alt=""
-        src="/rinotification2line.svg"
+        src="public/next.svg"
       />
     </div>
   );
