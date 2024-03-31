@@ -31,7 +31,7 @@ const Screen1: NextPage = () => {
                     alt=""
                     src="/sbIconGeo.svg"
                   />
-              </div>
+              
               <div className={styles.mastersStatusBarPartsA}>
                 
               </div>
