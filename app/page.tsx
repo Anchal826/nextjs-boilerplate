@@ -25,12 +25,13 @@ const Screen1: NextPage = () => {
           <div className={styles.mastersStatusBarPartsL}>
             <div className={styles.timeGeo}>
               <div className={styles.time}>1:11</div>
-              <div className={styles.mastersStatusBarPartsA}>
-                <img
+              <img
                     className={styles.sbIconGeo}
                     alt=""
                     src="/sbIconGeo.svg"
                   />
+              <div className={styles.mastersStatusBarPartsA}>
+                
               </div>
             </div>
           </div>
