@@ -33,7 +33,7 @@ const Screen1: NextPage = () => {
                   />
               
               <div className={styles.mastersStatusBarPartsA}>
-                
+                </div>
               </div>
             </div>
           </div>
