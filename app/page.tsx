@@ -18,7 +18,7 @@ const Screen1: NextPage = () => {
       <img
         className={styles.errorMsgillustrationIcon}
         alt=""
-        src="public/vercel.svg"
+        src="/error-msgillustration.svg"
       />
       <div className={styles.statusBar}>
         <div className={styles.mastersStatusBar}>
@@ -106,7 +106,7 @@ const Screen1: NextPage = () => {
       <img
         className={styles.rinotification2LineIcon}
         alt=""
-        src="public/next.svg"
+        src="/rinotification2line.svg"
       />
     </div>
   );
