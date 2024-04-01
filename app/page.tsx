@@ -16,9 +16,6 @@ const Screen1: NextPage = () => {
           <b className={styles.sendNotification}>Send Notification</b>
         </div>
       </div>
-      <div>
-      <Button onClick={handleClick}>Click me</Button>
-    </div>
       <div className={styles.errorMsgsection1}>
         <div className={styles.loremIpsum}>Lorem Ipsum...</div>
         <div className={styles.loremIpsumDolor}>
