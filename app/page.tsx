@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import Head from 'next/head';
 import styles from "./index.module.css";
-import Button from 'app/NotificationButton.js'; 
+import Button from './index.module.css'; 
 
 
 const Screen1: NextPage = () => {
