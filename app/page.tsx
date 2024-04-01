@@ -1,24 +1,38 @@
 import { NextPage } from "next";
 import Head from 'next/head';
 import styles from "./index.module.css";
+import { useEffect } from "react";
 
 const Screen1: NextPage = () => {
-  const handleNotificationClick = () => {
-    // Logic to send a notification
-    if ('Notification' in window && Notification.permission === 'granted') {
-      new Notification('Notification Title', {
-        body: 'Notification Body',
-      });
-    } else if ('Notification' in window && Notification.permission !== 'denied') {
-      Notification.requestPermission().then(function (permission) {
-        if (permission === 'granted') {
-          new Notification('Notification Title', {
-            body: 'Notification Body',
-          });
-        }
-      });
+  useEffect(() => {
+    const handleNotificationClick = () => {
+      // Logic to send a notification
+      if ('Notification' in window && Notification.permission === 'granted') {
+        new Notification('Notification Title', {
+          body: 'Notification Body',
+        });
+      } else if ('Notification' in window && Notification.permission !== 'denied') {
+        Notification.requestPermission().then(function (permission) {
+          if (permission === 'granted') {
+            new Notification('Notification Title', {
+              body: 'Notification Body',
+            });
+          }
+        });
+      }
+    };
+
+    const button = document.getElementById('notificationButton');
+    if (button) {
+      button.addEventListener('click', handleNotificationClick);
     }
-  };
+
+    return () => {
+      if (button) {
+        button.removeEventListener('click', handleNotificationClick);
+      }
+    };
+  }, []);
 
   return (
     <div>
@@ -29,7 +43,10 @@ const Screen1: NextPage = () => {
       
       <div className={styles.errorMsgsection2}>
         <div className={styles.section2ctaButton}>
-          <button onClick={handleNotificationClick}>Send Notification</button>
+          {/* Render the button only on the client-side */}
+          {typeof window !== 'undefined' && (
+            <button id="notificationButton">Send Notification</button>
+          )}
         </div>
       </div>
       <div className={styles.errorMsgsection1}>
