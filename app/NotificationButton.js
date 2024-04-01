@@ -1,23 +1,31 @@
-// components/NotificationButton.js
-import React from 'react';
+// NotificationButton.tsx
 
-const NotificationButton = () => {
-  const handleNotificationClick = () => {
-    if ('Notification' in window) {
-      Notification.requestPermission().then(permission => {
-        if (permission === 'granted') {
-          new Notification('Hello!', {
-            body: 'This is a notification from your Next.js app!'
-          });
-        }
-      });
+import React, { useEffect } from 'react';
+
+interface NotificationButtonProps {
+  onClick: () => void;
+}
+
+const NotificationButton: React.FC<NotificationButtonProps> = ({ onClick }) => {
+  useEffect(() => {
+    const handleClick = () => {
+      onClick();
+    };
+
+    const button = document.getElementById('notificationButton');
+    if (button) {
+      button.addEventListener('click', handleClick);
     }
-  };
+
+    return () => {
+      if (button) {
+        button.removeEventListener('click', handleClick);
+      }
+    };
+  }, [onClick]);
 
   return (
-    <button onClick={handleNotificationClick}>
-      Show Notification
-    </button>
+    <button id="notificationButton">Send Notification</button>
   );
 };
 
