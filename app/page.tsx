@@ -1,20 +1,9 @@
 import type { NextPage } from "next";
 import Head from 'next/head';
 import styles from "./index.module.css";
-import NotificationButton from './NotificationButton'; 
 
 const Screen1: NextPage = () => {
-  const handleNotificationClick = () => {
-    if ('Notification' in window) {
-      Notification.requestPermission().then(permission => {
-        if (permission === 'granted') {
-          new Notification('Hello!', {
-            body: 'This is a notification from your Next.js app!'
-          });
-        }
-      });
-    }
-  };
+
   return (
     <div className={styles.screen1}>
       {/* Include manifest link in the head section */}
@@ -25,10 +14,9 @@ const Screen1: NextPage = () => {
       
       <div className={styles.errorMsgsection2}>
         <div className={styles.section2ctaButton}>
-           <NotificationButton onClick={handleNotificationClick} />
+          <b className={styles.sendNotification}>Send Notification</b>
         </div>
       </div>
-
       <div className={styles.errorMsgsection1}>
         <div className={styles.loremIpsum}>Lorem Ipsum...</div>
         <div className={styles.loremIpsumDolor}>
