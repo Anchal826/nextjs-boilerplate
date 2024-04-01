@@ -1,38 +1,27 @@
 import { NextPage } from "next";
 import Head from 'next/head';
 import styles from "./index.module.css";
-import { useEffect } from "react";
+import { useClient } from 'next/client';
 
 const Screen1: NextPage = () => {
-  useEffect(() => {
-    const handleNotificationClick = () => {
-      // Logic to send a notification
-      if ('Notification' in window && Notification.permission === 'granted') {
-        new Notification('Notification Title', {
-          body: 'Notification Body',
-        });
-      } else if ('Notification' in window && Notification.permission !== 'denied') {
-        Notification.requestPermission().then(function (permission) {
-          if (permission === 'granted') {
-            new Notification('Notification Title', {
-              body: 'Notification Body',
-            });
-          }
-        });
-      }
-    };
+  useClient(); // Marking the component as a Client Component
 
-    const button = document.getElementById('notificationButton');
-    if (button) {
-      button.addEventListener('click', handleNotificationClick);
+  const handleNotificationClick = () => {
+    // Logic to send a notification
+    if ('Notification' in window && Notification.permission === 'granted') {
+      new Notification('Notification Title', {
+        body: 'Notification Body',
+      });
+    } else if ('Notification' in window && Notification.permission !== 'denied') {
+      Notification.requestPermission().then(function (permission) {
+        if (permission === 'granted') {
+          new Notification('Notification Title', {
+            body: 'Notification Body',
+          });
+        }
+      });
     }
-
-    return () => {
-      if (button) {
-        button.removeEventListener('click', handleNotificationClick);
-      }
-    };
-  }, []);
+  };
 
   return (
     <div>
@@ -45,7 +34,7 @@ const Screen1: NextPage = () => {
         <div className={styles.section2ctaButton}>
           {/* Render the button only on the client-side */}
           {typeof window !== 'undefined' && (
-            <button id="notificationButton">Send Notification</button>
+            <button id="notificationButton" onClick={handleNotificationClick}>Send Notification</button>
           )}
         </div>
       </div>
