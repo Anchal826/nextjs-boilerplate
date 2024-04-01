@@ -21,7 +21,7 @@ const Screen1: NextPage = () => {
   };
 
   return (
-    <div>
+     <div style={{ backgroundColor: 'black' }}>
       <Head>
         <link rel="manifest" href="/manifest.json" />
         {/* Other meta tags */}
