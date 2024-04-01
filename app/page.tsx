@@ -1,29 +1,26 @@
 import type { NextPage } from "next";
 import Head from 'next/head';
 import styles from "./index.module.css";
-import Button from "./Button"; 
+import NotificationButton from './NotificationButton';
 
 
 const Screen1: NextPage = () => {
   const handleNotificationClick = () => {
-  if ('Notification' in window) {
-    Notification.requestPermission().then(permission => {
-      if (permission === 'granted') {
-        new Notification('Hello!', {
-          body: 'This is a notification from your Next.js app!'
-        });
-      }
-    });
-  }
-};
+    // Handle notification click logic here
+    console.log('Notification button clicked');
+  };
+
   return (
-    <div className={styles.screen1}>
-      {/* Include manifest link in the head section */}
-      <Head>
-        <link rel="manifest" href="/manifest.json" />
-        {/* Other meta tags */}
-      </Head>
-      
+    <div>
+      <div className={styles.errorMsgsection2}>
+        <div className={styles.section2ctaButton}>
+          <NotificationButton onClick={handleNotificationClick} />
+        </div>
+      </div>
+      {/* Other content */}
+    </div>
+  );
+};
       <div className={styles.errorMsgsection2}>
         <div className={styles.section2ctaButton}>
            <Button onClick={handleNotificationClick}>Send Notification</Button>
