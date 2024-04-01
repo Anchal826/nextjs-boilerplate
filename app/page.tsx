@@ -1,27 +1,23 @@
-import { NextPage } from "next";
+import type { NextPage } from "next";
 import Head from 'next/head';
 import styles from "./index.module.css";
+import NotificationButton from './NotificationButton'; 
 
 const Screen1: NextPage = () => {
   const handleNotificationClick = () => {
-    // Logic to send a notification
-    if ('Notification' in window && Notification.permission === 'granted') {
-      new Notification('Notification Title', {
-        body: 'Notification Body',
-      });
-    } else if ('Notification' in window && Notification.permission !== 'denied') {
-      Notification.requestPermission().then(function (permission) {
+    if ('Notification' in window) {
+      Notification.requestPermission().then(permission => {
         if (permission === 'granted') {
-          new Notification('Notification Title', {
-            body: 'Notification Body',
+          new Notification('Hello!', {
+            body: 'This is a notification from your Next.js app!'
           });
         }
       });
     }
   };
-
   return (
-     <div style={{ backgroundColor: 'black' }}>
+    <div className={styles.screen1}>
+      {/* Include manifest link in the head section */}
       <Head>
         <link rel="manifest" href="/manifest.json" />
         {/* Other meta tags */}
@@ -29,12 +25,10 @@ const Screen1: NextPage = () => {
       
       <div className={styles.errorMsgsection2}>
         <div className={styles.section2ctaButton}>
-          {/* Render the button only on the client-side */}
-          {typeof window !== 'undefined' && (
-            <button id="notificationButton" onClick={handleNotificationClick}>Send Notification</button>
-          )}
+           <NotificationButton onClick={handleNotificationClick} />
         </div>
       </div>
+
       <div className={styles.errorMsgsection1}>
         <div className={styles.loremIpsum}>Lorem Ipsum...</div>
         <div className={styles.loremIpsumDolor}>

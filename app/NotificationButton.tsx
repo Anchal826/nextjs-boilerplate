@@ -1,3 +1,4 @@
+// components/NotificationButton.tsx
 import React from 'react';
 
 interface NotificationButtonProps {
@@ -5,12 +6,22 @@ interface NotificationButtonProps {
 }
 
 const NotificationButton: React.FC<NotificationButtonProps> = ({ onClick }) => {
-  const handleClick = () => {
-    onClick();
+  const handleNotificationClick = () => {
+    if ('Notification' in window) {
+      Notification.requestPermission().then(permission => {
+        if (permission === 'granted') {
+          new Notification('Hello!', {
+            body: 'This is a notification from your Next.js app!'
+          });
+        }
+      });
+    }
   };
 
   return (
-    <button onClick={handleClick}>Send Notification</button>
+    <button onClick={handleNotificationClick}>
+      Show Notification
+    </button>
   );
 };
 
