@@ -30,6 +30,8 @@ const Screen1: NextPage = () => {
       </div>
       {/* Other content */}
     </div>
+);
+};
 
 
       <div className={styles.errorMsgsection2}>
@@ -144,7 +146,6 @@ const Screen1: NextPage = () => {
         src="/rinotification2line.svg"
       />
     </div>
-  );
-};
+  
 
 export default Screen1;
