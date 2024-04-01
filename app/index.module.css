@@ -19,9 +19,6 @@
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
-<h2>Animated Button - "Pressed Effect"</h2>
-
-<button class="button">Click Me</button>
 
 .sendNotification {
   position: relative;
