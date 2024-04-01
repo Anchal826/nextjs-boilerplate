@@ -14,10 +14,11 @@ const Screen1: NextPage = () => {
       <div className={styles.errorMsgsection2}>
         <div className={styles.section2ctaButton}>
           <b className={styles.sendNotification}>Send Notification</b>
-          <h2>Animated Button - "Pressed Effect"</h2>
-          <button class="button">Click Me</button>
         </div>
       </div>
+      <div>
+      <Button onClick={handleClick}>Click me</Button>
+    </div>
       <div className={styles.errorMsgsection1}>
         <div className={styles.loremIpsum}>Lorem Ipsum...</div>
         <div className={styles.loremIpsumDolor}>
