@@ -21,7 +21,7 @@ const Screen1: NextPage = () => {
   };
 
   return (
-    <div style={{ backgroundColor: 'black' }}>
+    <div>
       <Head>
         <link rel="manifest" href="/manifest.json" />
         {/* Other meta tags */}
@@ -29,7 +29,10 @@ const Screen1: NextPage = () => {
       
       <div className={styles.errorMsgsection2}>
         <div className={styles.section2ctaButton}>
-          <button onClick={handleNotificationClick}>Send Notification</button>
+          {/* Render the button only on the client-side */}
+          {typeof window !== 'undefined' && (
+            <button id="notificationButton" onClick={handleNotificationClick}>Send Notification</button>
+          )}
         </div>
       </div>
       <div className={styles.errorMsgsection1}>
@@ -49,8 +52,8 @@ const Screen1: NextPage = () => {
             <div className={styles.timeGeo}>
               <div className={styles.time}>1:11</div>   
               <div className={styles.mastersStatusBarPartsA}>
-                <div>
-                  <img
+              <div>
+                <img
                     className={styles.sbIconGeo}
                     alt=""
                     src="/sbIconGeo.svg"
