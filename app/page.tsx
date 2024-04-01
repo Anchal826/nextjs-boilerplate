@@ -1,11 +1,8 @@
 import { NextPage } from "next";
 import Head from 'next/head';
 import styles from "./index.module.css";
-import { useClient } from 'next/client';
 
 const Screen1: NextPage = () => {
-  useClient(); // Marking the component as a Client Component
-
   const handleNotificationClick = () => {
     // Logic to send a notification
     if ('Notification' in window && Notification.permission === 'granted') {
