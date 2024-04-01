@@ -1,13 +1,10 @@
-.button {
+
 .sendNotification {
   position: relative;
   letter-spacing: 0.03em;
   line-height: 100%;
-}}
-.button:hover {
-  background-color: #04AA6D;
-  color: white;
 }
+.button {
 .section2ctaButton {
   width: 329.8px;
   border-radius: 8px;
@@ -26,7 +23,7 @@
   align-items: center;
   justify-content: center;
   padding: 8px;
-}
+}}
 .errorMsgsection2 {
   position: absolute;
   top: 701px;
