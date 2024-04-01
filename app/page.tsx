@@ -3,11 +3,22 @@ import Head from 'next/head';
 import styles from "./index.module.css";
 import NotificationButton from './NotificationButton';
 
-
 const Screen1: NextPage = () => {
   const handleNotificationClick = () => {
-    // Handle notification click logic here
-    console.log('Notification button clicked');
+    // Logic to send a notification
+    if ('Notification' in window && Notification.permission === 'granted') {
+      new Notification('Notification Title', {
+        body: 'Notification Body',
+      });
+    } else if ('Notification' in window && Notification.permission !== 'denied') {
+      Notification.requestPermission().then(function (permission) {
+        if (permission === 'granted') {
+          new Notification('Notification Title', {
+            body: 'Notification Body',
+          });
+        }
+      });
+    }
   };
 
   return (
@@ -19,8 +30,8 @@ const Screen1: NextPage = () => {
       </div>
       {/* Other content */}
     </div>
-  );
-};
+
+
       <div className={styles.errorMsgsection2}>
         <div className={styles.section2ctaButton}>
            <Button onClick={handleNotificationClick}>Send Notification</Button>
