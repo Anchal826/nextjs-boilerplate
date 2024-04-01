@@ -1,9 +1,16 @@
 import type { NextPage } from "next";
+import Head from 'next/head';
 import styles from "./index.module.css";
 
 const Screen1: NextPage = () => {
   return (
     <div className={styles.screen1}>
+      {/* Include manifest link in the head section */}
+      <Head>
+        <link rel="manifest" href="/manifest.json" />
+        {/* Other meta tags */}
+      </Head>
+      
       <div className={styles.errorMsgsection2}>
         <div className={styles.section2ctaButton}>
           <b className={styles.sendNotification}>Send Notification</b>
